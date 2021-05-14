@@ -17,8 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   npm-build-test:
-    # restrict job to be triggered by one person only
-    if: ${{ github.actor == 'greg-ciandt' }}
+    
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     
@@ -40,5 +39,12 @@ jobs:
         run: npm ci
       - run: npm run build --if-present
       - name: run npm test
-        if: ${{ github.actor != 'greg-ciandt' }}
         run: npm test
+
+  deploy:
+    # restrict job to be triggered by one person only
+    if: ${{ github.actor == 'greg-ciandt' }}
+    run: echo "Deployed!"
+  
+
+
