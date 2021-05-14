@@ -18,7 +18,7 @@ jobs:
   # This workflow contains a single job called "build"
   restriction-check:
     
-    if: ${{ github.actor != 'greg-ciandt' }}
+    if: ${{ github.actor == 'greg-ciandt' }}
     
     runs-on: ubuntu-latest
     
