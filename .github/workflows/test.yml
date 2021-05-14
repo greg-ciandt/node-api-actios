@@ -16,6 +16,16 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
+  restriction-check:
+    
+    if: ${{ github.actor != 'greg-ciandt' }}
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: check restriction triggered by one person only
+        run: echo "::error file=app.js,line=10,col=15::Something went wrong"
+
   npm-build-test:
     # restrict job to be triggered by one person only
     if: ${{ github.actor == 'greg-ciandt' }}
