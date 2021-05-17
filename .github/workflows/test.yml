@@ -57,7 +57,9 @@ jobs:
         with:
           path: ./*
           key: ${{ github.sha }}
-          run: npm test
+
+      - name: Test
+        run: npm test
 
   deploy:
     needs: [test]
